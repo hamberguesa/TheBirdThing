@@ -1,11 +1,23 @@
 
 
 get '/new_tweet' do
-  erb :new_tweet
+  @user = User.find(session[:user_id])
+  if @user.nil?
+    redirect '/'
+  else
+    erb :new_tweet
+  end
 end
 
+
 post '/new_tweet' do
-  # Tweets need to know who authors them.
+  @user = User.find(session[:user_id])
+  if @user.nil?
+    redirect '/'
+  else
+    @user.tweets.create(params)
+    redirect "/#{@user.tweets.last.id}"
+  end
 end
 
 get '/edit_tweet/:id' do
@@ -13,9 +25,26 @@ get '/edit_tweet/:id' do
 end
 
 put '/edit_tweet/:id' do
-
-  redirect '/profile/:id'
+  @user = User.find(session[:user_id])
+  @tweet = Tweet.find(params[:id])
+  if @user.id == @tweet.user_id
+    @tweet.update(content: params[:content])
+    redirect '/:id'
+  else
+    # give permision error
+  end
 end
 
-delete '/delete_tweet' do
+delete '/:id' do
+  @user = User.find(session[:user_id])
+  @tweet = Tweet.find(params[:id])
+  if @user.id == @tweet.user_id
+    @tweet.destroy
+  else
+    # give permision error
+  end
+end
+
+get '/:id' do
+  @tweet = Tweet.find(params[:id])
 end
