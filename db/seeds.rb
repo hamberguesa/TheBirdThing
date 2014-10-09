@@ -8,7 +8,7 @@ class Seeds
     User.all.each do |user|
       10.times do
         r = user.relationships.new(followed_id: User.all.sample.id)
-        r.save if Relationship.where(followed_id: r.followed_id, follower_id: r.follower_id).nil?
+        r.save if Relationship.where(followed_id: r.followed_id, follower_id: r.follower_id).count == 0
         user.tweets.create(content: Faker::Lorem.sentence(2))
       end
     end
