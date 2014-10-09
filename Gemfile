@@ -11,6 +11,7 @@ gem 'sinatra-contrib'
 gem 'activesupport', '~>4.1'
 gem 'activerecord', '~>4.1'
 gem 'bcrypt'
+gem 'rack-flash3'
 gem 'rake'
 
 gem 'shotgun'
