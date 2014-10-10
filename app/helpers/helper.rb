@@ -5,4 +5,8 @@ helpers do
   def current_user
     @current_user || User.authenticate(session[:id])
   end
+
+  def no_user_redirect
+    redirect '/' if current_user.nil?
+  end
 end
