@@ -1,7 +1,7 @@
 
 
 get '/new_tweet' do
-  @user = User.find(session[:user_id])
+  @user = User.authenticate(session[:user_id])
   if @user.nil?
     redirect '/'
   else
@@ -11,7 +11,7 @@ end
 
 
 post '/new_tweet' do
-  @user = User.find(session[:user_id])
+  @user = User.authenticate(session[:user_id])
   if @user.nil?
     redirect '/'
   else
@@ -25,7 +25,7 @@ get '/edit_tweet/:id' do
 end
 
 put '/edit_tweet/:id' do
-  @user = User.find(session[:user_id])
+  @user = User.authenticate(session[:user_id])
   @tweet = Tweet.find(params[:id])
   if @user.id == @tweet.user_id
     @tweet.update(content: params[:content])
@@ -36,7 +36,7 @@ put '/edit_tweet/:id' do
 end
 
 delete '/:id' do
-  @user = User.find(session[:user_id])
+  @user = User.authenticate(session[:user_id])
   @tweet = Tweet.find(params[:id])
   if @user.id == @tweet.user_id
     @tweet.destroy
