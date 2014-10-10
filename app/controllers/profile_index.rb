@@ -48,8 +48,16 @@ end
 
 get '/home' do
   no_user_redirect
-  erb :home_page
+  @tweets = []
+  current_user.followed_users.each do |user|
+    user.tweets.each do |tweet|
+      @tweets << tweet
+    end
+  end
+
+  erb :home
 end
+
 
 get '/profile/:id' do
   @profile = User.find(params[:id])
