@@ -13,7 +13,7 @@ post '/new_tweet' do
     redirect '/'
   else
     @user.tweets.create(params)
-    redirect "/#{@user.tweets.last.id}"
+    redirect "/home"
   end
 end
 
