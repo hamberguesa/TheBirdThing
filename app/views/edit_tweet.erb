@@ -1,1 +1,9 @@
-  # Show a form with the old content ghosted in.
+<h4>Edit Your Tweet</h4>
+
+ <form class="form-edit" name="input" action="/edit_tweet/<%= @tweet.id %>" method="post">
+  <input type="hidden" name="_method" value="put" >
+  <input type="string" class="input-block-level" value="<%= @tweet.content %>" name="content">
+  <button class="btn btn-large btn-primary" type="submit">Edit</button>
+</form>
+
+
