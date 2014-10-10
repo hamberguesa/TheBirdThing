@@ -54,6 +54,7 @@ get '/home' do
       @tweets << tweet
     end
   end
+
   erb :home
 end
 
