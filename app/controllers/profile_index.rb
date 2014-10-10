@@ -47,11 +47,8 @@ post '/login' do
 end
 
 get '/home' do
-  if current_user.nil?
-    redirect '/'
-  else
-    erb :home_page
-  end
+  no_user_redirect
+  erb :home
 end
 
 get '/profile/:id' do

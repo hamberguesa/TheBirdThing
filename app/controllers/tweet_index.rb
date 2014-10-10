@@ -1,18 +1,14 @@
 get '/new_tweet' do
-  if current_user.nil?
-    redirect '/'
-  else
-    erb :new_tweet
-  end
+  no_user_redirect
+
+  erb :new_tweet
+
 end
 
 post '/new_tweet' do
-  if current_user.nil?
-    redirect '/'
-  else
-    current_user.tweets.create(params)
-    redirect "/home"
-  end
+  no_user_redirect
+  current_user.tweets.create(params)
+  redirect "/home"
 end
 
 get '/edit_tweet/:id' do
