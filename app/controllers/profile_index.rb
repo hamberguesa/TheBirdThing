@@ -62,3 +62,8 @@ post '/follow' do
   redirect "/profile/#{params[:id]}"
 end
 
+get '/followers/:id' do
+  @user = User.find(params[:id])
+  erb :follower
+end
+
