@@ -1,4 +1,3 @@
-
 get '/' do
   if User.find(session[:user_id]).nil?
     erb :welcome
@@ -6,7 +5,6 @@ get '/' do
     redirect '/home'
   end
 end
-
 
 post '/signup' do
   if params[:password] == params[:verify_password]
@@ -38,8 +36,14 @@ get '/logout' do
 end
 
 post '/login' do
-
-  redirect '/home'
+  @user = User.find_by_username(params[:username])
+  if @user.password == params[:password]
+    session[:user_id] = @user.id
+    redirect '/home'
+  else
+    flash[:notice] = "Login failed"
+    redirect '/'
+  end
 end
 
 get '/home' do
