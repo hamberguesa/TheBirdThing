@@ -1,8 +1,26 @@
-# Shows user_info (name, username, picture)
-  # Show user's tweets
-  # Will have links to:
-  # => home page
-  # => log out button
-  # => write-a-tweet button
+<h2>@<%= @profile.username %></h2>
+<h4><%= @profile.name %></h4>
+<img src="<%= gravatar @profile %>">
+
+
+<ul>
+  <li>Tweets <%= @profile.tweets.count %></li>
+  <li>Following <%= @profile.followed_users.count %></li>
+  <li>Followers <%= @profile.followers.count %></li>
+  <% unless current_user.followed_users.include?(@profile) %>
+  <li>
+    <form action="/follow" method="post">
+      <input type="hidden" value="<%= @profile.id %>" name="id">
+      <input type="submit" value="Follow">
+    </form>
+  </li>
+  <% end %>
+</ul>
+<h2>Your Tweets</h2>
+<% @profile.tweets.each do |tweet| %>
+<div class="tweet"><%= tweet.content %></div>
+<% end %>
+
+
 
 

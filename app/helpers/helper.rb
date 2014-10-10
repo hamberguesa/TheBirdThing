@@ -9,4 +9,8 @@ helpers do
   def no_user_redirect
     redirect '/' if current_user.nil?
   end
+
+  def gravatar user
+    Gravatar.new(user.email, {size: 80})
+  end
 end
