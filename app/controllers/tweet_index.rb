@@ -12,7 +12,13 @@ post '/new_tweet' do
 end
 
 get '/edit_tweet/:id' do
-  erb :edit_tweet
+    @tweet = Tweet.find(params[:id])
+    if current_user.id == @tweet.user_id
+    erb :edit_tweet
+  else
+    flash[:notice] = "You don't have permission to edit"
+    redirect '/home'
+  end
 end
 
 put '/edit_tweet/:id' do
