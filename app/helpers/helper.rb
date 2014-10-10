@@ -3,7 +3,7 @@ helpers do
     Rack::Utils.escape_html(text)
   end
   def current_user
-    @current_user || User.authenticate(session[:id])
+    @current_user || User.authenticate(session[:user_id])
   end
 
   def no_user_redirect
