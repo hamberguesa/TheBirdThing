@@ -1,5 +1,5 @@
 get '/' do
-  if User.authenticate(session[:user_id]).nil?
+  if current_user.nil?
     erb :welcome
   else
     redirect '/home'
@@ -47,8 +47,7 @@ post '/login' do
 end
 
 get '/home' do
-  @user = User.authenticate(session[:user_id])
-  if @user.nil?
+  if current_user.nil?
     redirect '/'
   else
     erb :home_page
