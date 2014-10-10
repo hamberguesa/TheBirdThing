@@ -1,12 +1,12 @@
 
 
 get '/new_tweet' do
-  @user = User.find(session[:user_id])
-  if @user.nil?
-    redirect '/'
-  else
+  # @user = User.find(session[:user_id])
+  # if @user.nil?
+  #   redirect '/'
+  # else
     erb :new_tweet
-  end
+  # end
 end
 
 
