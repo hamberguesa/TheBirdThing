@@ -2,21 +2,21 @@
 <div class="container">
 
 <div class="header_bar">
-<li> <a href=<%='/profile'%>>Profile</a></li>
+<li> <a href='/profile/<%= current_user.id %>'>Profile</a></li>
 
 <li> <a href=<%='/new_tweet'%>>write a tweet button</a></li>
 
 <li><a href=<%='/logout'%>>Log out button</a></li>
  </div>
 
-<h3>Welcome @<%="#{@user.username}"%>! Here are recent tweets from people you follow:</h3>
+<h3>Welcome @<%="#{current_user.username}"%>! Here are recent tweets from people you follow:</h3>
 
 <% @tweets.each do |x| %>
   <div class="tweet_display_box">
   <ul>
   </li><a href=<%="/profile/#{x.user.id}"%>>@<%=x.user.username%></a></li>
   <li><%= x.content %></li>
-  <li><a href=<%='RETWEET BUTTON GOES HERE'%>>retweet!</a></li>
+  <li><a href=<%= "/new_tweet/#{x.id}" %>>retweet!</a></li>
 </ul>
 </div>
 <% end %>

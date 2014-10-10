@@ -1,6 +1,15 @@
+get '/new_tweet/:id' do
+  no_user_redirect
+  content = Tweet.find(params[:id]).content
+  @tweet = current_user.tweets.new(tweet_id: params[:id], content: content)
+  erb :new_tweet
+
+end
+
+
 get '/new_tweet' do
   no_user_redirect
-
+  @tweet = current_user.tweets.new()
   erb :new_tweet
 
 end
