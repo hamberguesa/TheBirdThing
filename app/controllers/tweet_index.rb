@@ -1,5 +1,3 @@
-
-
 get '/new_tweet' do
   @user = User.authenticate(session[:user_id])
   if @user.nil?
@@ -8,7 +6,6 @@ get '/new_tweet' do
     erb :new_tweet
   end
 end
-
 
 post '/new_tweet' do
   @user = User.authenticate(session[:user_id])
@@ -31,7 +28,8 @@ put '/edit_tweet/:id' do
     @tweet.update(content: params[:content])
     redirect '/:id'
   else
-    # give permision error
+    flash[:notice] = "You don't have permission to edit"
+    redirect '/home'
   end
 end
 
@@ -41,7 +39,8 @@ delete '/:id' do
   if @user.id == @tweet.user_id
     @tweet.destroy
   else
-    # give permision error
+    flash[:notice] = "You don't have permission to delete"
+    redirect '/home'
   end
 end
 
