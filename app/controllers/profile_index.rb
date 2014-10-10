@@ -67,3 +67,8 @@ get '/followers/:id' do
   erb :follower
 end
 
+get '/following/:id' do
+  @user = User.find(params[:id])
+  erb :following
+end
+

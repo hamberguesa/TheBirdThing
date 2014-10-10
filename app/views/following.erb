@@ -1,0 +1,7 @@
+<h4>@<%= @user.username %> is Following</h4>
+
+<ul>
+  <% @user.followed_users.each do |following| %>
+    <li><a href="/profile/<%= following.id %>">@<%= following.username %></a></li>
+  <% end %>
+</ul>
