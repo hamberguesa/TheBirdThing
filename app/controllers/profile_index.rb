@@ -48,11 +48,17 @@ end
 
 get '/home' do
   no_user_redirect
-  erb :home
+  erb :home_page
 end
 
 get '/profile/:id' do
   @profile = User.find(params[:id])
   erb :profile
+end
+
+post '/follow' do
+  no_user_redirect
+  current_user.followed_users << User.find(params[:id])
+  redirect "/profile/#{params[:id]}"
 end
 

@@ -13,7 +13,7 @@ gem 'activerecord', '~>4.1'
 gem 'bcrypt'
 gem 'rack-flash3'
 gem 'rake'
-
+gem 'gravatar'
 gem 'shotgun'
 
 group :test do
