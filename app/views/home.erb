@@ -16,7 +16,7 @@
   <ul>
   </li><a href=<%="/profile/#{x.user.id}"%>>@<%=x.user.username%></a></li>
   <li><%= x.content %></li>
-  <li><a href=<%='RETWEET BUTTON GOES HERE'%>>retweet!</a></li>
+  <li><a href=<%= "/new_tweet/#{x.id}" %>>retweet!</a></li>
 </ul>
 </div>
 <% end %>

@@ -68,7 +68,8 @@
 
       <form class="form-signin" name="input" action="/new_tweet" method="post">
         <h2 class="form-signin-heading">Write a new Birdthing tweet (actuall name pending)!</h2>
-        <input type="string" class="input-block-level" placeholder="Say your mind." name="content">
+        <input type="hidden" name="tweet_id" value=<%= @tweet.tweet_id %>>
+        <input type="string" class="input-block-level" placeholder="Say your mind." name="content" value="<%= @tweet.content %>">
         <button class="btn btn-large btn-primary" type="submit">Birdsbirdsbirds</button>
         <a href="/home"><button class="btn btn-large btn-primary">Cancel</button></a>
       </form>
