@@ -5,7 +5,7 @@
 
 <ul>
   <li>Tweets <%= @profile.tweets.count %></li>
-  <li>Following <%= @profile.followed_users.count %></li>
+  <li><a href="/following/<%= @profile.id %>">Following <%= @profile.followed_users.count %></a></li>
   <li><a href="/followers/<%= @profile.id %>">Followers <%= @profile.followers.count %></a></li>
   <% unless current_user.followed_users.include?(@profile) %>
   <li>
