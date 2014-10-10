@@ -1,9 +1,10 @@
+<div class="hero-unit">
 <h2>@<%= @profile.username %></h2>
 <h4><%= @profile.name %></h4>
 <img src="<%= gravatar @profile %>">
 
-
-<ul>
+<div class="navbar">
+<ul class='nav'>
   <li>Tweets <%= @profile.tweets.count %></li>
   <li><a href="/following/<%= @profile.id %>">Following <%= @profile.followed_users.count %></a></li>
   <li><a href="/followers/<%= @profile.id %>">Followers <%= @profile.followers.count %></a></li>
@@ -16,11 +17,15 @@
   </li>
   <% end %>
 </ul>
+</div>
+</div>
+<br />
+<div class="hero-unit">
 <h2>Your Tweets</h2>
 <% @profile.tweets.each do |tweet| %>
 <div class="tweet"><%= tweet.content %></div>
 <% end %>
-
+</div>
 
 
 

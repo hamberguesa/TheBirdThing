@@ -6,19 +6,39 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/css/normalize.css">
+  <!-- <link rel="stylesheet" href="/css/normalize.css"> -->
   <!--
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
+
 
   <title></title>
 </head>
 <body>
   <!-- add header nav bar stuff!! -->
+  <% unless current_user.nil? %>
+  <div class=""container"">
+  <div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+    <li class"active"><a href="/home">Home</a></li>
+    <li> <a href='/profile/<%= current_user.id %>'>Profile</a></li>
+    <li> <a href=<%='/new_tweet'%>>Tweet</a></li>
+    <li><a href=<%='/logout'%>>Log out</a></li>
+    </ul>
+ </div></div>
+ </div>
+  <% end %>
+  <div class="container">
   <%= yield %>
+  </div>
 </body>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+  <script src="/css/js/bootstrap.js"></script>
+
 </html>

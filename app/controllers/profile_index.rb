@@ -54,7 +54,7 @@ get '/home' do
       @tweets << tweet
     end
   end
-
+  # @tweets.sort { |t| t.updated_at}
   erb :home
 end
 

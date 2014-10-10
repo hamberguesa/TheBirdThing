@@ -67,10 +67,10 @@
 <div class="container">
 
       <form class="form-signin" name="input" action="/new_tweet" method="post">
-        <h2 class="form-signin-heading">Write a new Birdthing tweet (actuall name pending)!</h2>
+        <h2 class="form-signin-heading">Sing your bird song!</h2>
         <input type="hidden" name="tweet_id" value=<%= @tweet.tweet_id %>>
-        <input type="string" class="input-block-level" placeholder="Say your mind." name="content" value="ReBirded from <%=@tweet.user.username %>: <%=@tweet.content %>">
-        <button class="btn btn-large btn-primary" type="submit">Birdsbirdsbirds</button>
+        <input type="string" class="input-block-level" placeholder="Say your mind." name="content" value="<%= @tweet.content %>">
+        <button class="btn btn-large btn-primary" type="submit">Squawk!</button>
         <a href="/home"><button class="btn btn-large btn-primary">Cancel</button></a>
       </form>
 
