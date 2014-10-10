@@ -14,6 +14,7 @@ require 'pathname'
 require 'pg'
 require 'active_record'
 require 'logger'
+require 'rack-flash'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
@@ -31,6 +32,8 @@ configure do
   set :root, APP_ROOT.to_path
   # See: http://www.sinatrarb.com/faq.html#sessions
   enable :sessions
+  use Rack::Flash
+
   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
   # Set the views to
